@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Product Catalog</title>
+
+    <!-- jNavionicsChart -->
+    <link rel="stylesheet" href="http://webapiv2.navionics.com/dist/webapi/webapi.min.css">
+    <script type="text/javascript" src="http://webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+
+    <style>
+        html, body, .test_map_div {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body data-root="http://webapiv2.navionics.com/dist/webapi/images" >
+
+
+
+
+<div id="GoldContainer" class="test_map_div" ></div>
+
+
+
+<script>
+
+    var productViewer5 = new JNC.Views.LightCatalogProductViewer({
+        containerSelector: '#GoldContainer',
+        zoom: 0.8,
+        url: 'http://webapp.navionics.com',
+        navKey: '*******'
+    });
+    productViewer5.showProduct('Gold');
+
+</script>
+</body>
+</html>
