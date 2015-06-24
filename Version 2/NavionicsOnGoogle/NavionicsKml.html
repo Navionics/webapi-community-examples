@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Navionics Web API v2</title>
+
+    <!--Google API-->
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!--Example Styles-->
+    <link rel="stylesheet" href="http://webapiv2.navionics.com/examples/data/responsive.css" > <link rel="stylesheet" href="http://webapiv2.navionics.com/examples/data/rainbow/themes/theme.css" > <script type="text/javascript" src="http://webapiv2.navionics.com/examples/data/rainbow/rainbow-custom.min.js"></script>
+    <link rel="stylesheet" href="http://webapiv2.navionics.com/examples/data/rainbow/themes/theme.css" >
+    <script type="text/javascript" src="http://webapiv2.navionics.com/examples/data/rainbow/rainbow-custom.min.js"></script>
+
+
+    <!-- jNavionicsChart -->
+    <link rel="stylesheet" href="http://webapiv2.navionics.com/dist/webapi/webapi.min.css" >
+    <script type="text/javascript" src="http://webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+        .map {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            border: 1px solid gray;
+        }
+
+    </style>
+
+</head>
+<body data-root="http://webapiv2.navionics.com/dist/webapi/images" ><div id="nautical-map-container" class="map" ></div><script>
+ var point = new google.maps.LatLng(44.0,10.0);
+ var gMapNauticalOptions = {
+		zoom: 8,
+		center: point,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	// Creation of  Google Map Engine
+	var gMapNautical = new google.maps.Map(document.getElementById("nautical-map-container"), gMapNauticalOptions);
+
+	//Navionics NauticalChart
+	var navionics_nauticalchart_layer = new JNC.Views.gNavionicsOverlay({
+		navKey: 'Navionics_support_00001',
+		chartType: JNC.Views.gNavionicsOverlay.CHARTS.NAUTICAL
+	});
+
+	 var ctaLayer = new google.maps.KmlLayer({
+    url: 'http://apisupport.altervista.org/img/benedetta_marker_1.kml'
+  });
+  ctaLayer.setMap(gMapNautical);
+
+	gMapNautical.overlayMapTypes.insertAt(0, navionics_nauticalchart_layer);
+	  
+	//gMapNautical.loadKml('http://apisupport.altervista.org/img/benedetta_marker_1.kml', false);
+	//gMapNautical.loadKml('http://apisupport.altervista.org/img/Benedetta_marker.kml', false);
+
+     		//webapi.showSonarControl(false);
+
+    </script>
+</body></html>
