@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="authenticity_token" name="csrf-param" />
+    <title>Navionics Web API v2</title>
+
+    <link rel="stylesheet" href="http://webapiv2.navionics.com/dist/webapi/webapi.min.css" >
+    <script type="text/javascript" src="http://webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+
+    <style type="text/css">
+        html, body, .test_map_div {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body data-root="http://webapiv2.navionics.com/dist/webapi/images" >
+   <div class="test_map_div" ></div>
+    <script>
+        var webapi = new JNC.Views.BoatingNavionicsMap({
+            tagId: '.test_map_div',
+            center: [  -80.0, 46.0 ],
+            zoom: 8,
+            navKey: 'Navionics_support_00001'
+        });
+
+        webapi.showSonarControl(true);
+    </script>
+</body>
+</html>

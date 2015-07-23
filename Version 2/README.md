@@ -1,6 +1,7 @@
 #WebAPI Community Examples
 Example for the WebAPI V2. Content of this folder:
 
+* AmericanCoordinates - Example of how to set coordinates in USA
 * DefaultDisplaySettings - Example of the possibles default settings 
 * LoadKmls - Example for loading several kml files
 * ProductCatalog - Example of Light Product Catalog
