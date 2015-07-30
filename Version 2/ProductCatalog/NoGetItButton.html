@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="authenticity_token" name="csrf-param" />
+    <title>Navionics Web API v2</title>
+
+    <link rel="stylesheet" href="http://webapiv2.navionics.com/dist/webapi/webapi.min.css" >
+    <script type="text/javascript" src="http://webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+
+    <style type="text/css">
+        html, body, .test_map_div {
+            margin: 0;
+            width: 70%;
+            height: 80%;
+        }
+    </style>
+</head>
+<body data-root="http://webapiv2.navionics.com/dist/webapi/images" >
+   <div id="test_map_div" ></div>
+    <script>
+    var productViewer = new JNC.Views.LightCatalogProductViewer({
+    containerSelector: '#test_map_div',
+    center: [  -102.797723, 41.051967 ],
+    zoom: 0,
+    url: 'http://webapp.navionics.com',
+    depthUnit: JNC.DEPTH_UNIT.FEET,
+    DistanceControl: true,
+    DepthUnitControl: true,
+    SonarControl: true,
+    navKey: 'Navionics_support_00001'
+});
+
+productViewer.showProduct('NavionicsPlus');
+productViewer.setVisibleButtonPanel(false);
+</script>
+</body>
+</html>
