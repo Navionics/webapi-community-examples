@@ -6,8 +6,8 @@
     <meta content="authenticity_token" name="csrf-param" />
     <title>Navionics Web API v2</title>
 
-     <script type="text/javascript" src="http://webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
-   <link rel="stylesheet" href="http://webapiv2.navionics.com/dist/webapi/webapi.min.css" >
+     <script type="text/javascript" src="//webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+   <link rel="stylesheet" href="//webapiv2.navionics.com/dist/webapi/webapi.min.css" >
 
     <style type="text/css">
         html, body, .test_map_div {
@@ -17,7 +17,7 @@
         }
     </style>
 </head>
-<body data-root="http://webapiv2.navionics.com/dist/webapi/images" >
+<body data-root="//webapiv2.navionics.com/dist/webapi/images" >
    <div class="test_map_div" ></div>
     <script>
         var webapi = new JNC.Views.BoatingNavionicsMap({
@@ -25,8 +25,8 @@
             center: [ 10.0, 44.0 ],
             navKey: 'Navionics_support_00001',
         });
-		webapi.loadKml('http://apisupport.altervista.org/img/benedetta_marker_1.kml', false);
-		webapi.loadKml('http://apisupport.altervista.org/img/Benedetta_marker.kml', false);
+		webapi.loadKml('//apisupport.altervista.org/img/benedetta_marker_1.kml', false);
+		webapi.loadKml('//apisupport.altervista.org/img/Benedetta_marker.kml', false);
 		
         webapi.showSonarControl(true);
     </script>
