@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Navionics Web API v2</title>
+
+    <!--Google API-->
+    <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+    <!-- jNavionicsChart -->
+    <link rel="stylesheet" href="//webapiv2.navionics.com/dist/webapi/webapi.min.css" >
+    <script type="text/javascript" src="//webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px
+        }
+        .map {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            border: 1px solid gray;
+        }
+
+    </style>
+
+</head>
+<body data-root="//webapiv2.navionics.com/dist/webapi/images" ><div id="nautical-map-container" class="map" ></div><script>
+ var point = new google.maps.LatLng(44.0,10.0);
+ var gibilterra = new google.maps.LatLng(36.140751,-5.353585);
+ var gMapNauticalOptions = {
+		zoom: 14,
+		center: gibilterra,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	// Creation of  Google Map Engine
+	var gMapNautical = new google.maps.Map(document.getElementById("nautical-map-container"), gMapNauticalOptions);
+
+	//Navionics NauticalChart
+	var navionics_nauticalchart_layer = new JNC.Views.gNavionicsOverlay({
+		navKey: 'Navionics_support_00001',
+		chartType: JNC.Views.gNavionicsOverlay.CHARTS.NAUTICAL
+	});
+
+	gMapNautical.overlayMapTypes.insertAt(0, navionics_nauticalchart_layer);
+	  
+    </script>
+</body></html>
