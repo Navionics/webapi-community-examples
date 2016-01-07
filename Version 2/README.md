@@ -6,6 +6,6 @@ Example for the WebAPI V2. Content of this folder:
 * DefaultDisplaySettings - Example of the possibles default settings 
 * LoadKmls - Example for loading several kml files
 * ProductCatalog - Example of Light Product Catalog
-* NavionicsOnGoogle - Example of kml file on Navionics Google layer
+* NavionicsOnGoogle - Examples of Navionics Google layer with and without kml file.
 * NavionicsOnLeaflet - Example of how to use Navionics Layer on Leaflet
 * Zooms - Example of different default zoom levels
