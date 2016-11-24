@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Example flyToPosition </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <script type="text/javascript" src="//webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+    <link rel="stylesheet" href="//webapiv2.navionics.com/dist/webapi/webapi.min.css">
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #map {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3px;
+            margin-bottom: 20px;
+            width: 80%;
+            height: 80%;
+            -webkit-box-shadow: -1px 7px 44px -2px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: -1px 7px 44px -2px rgba(0, 0, 0, 0.4);
+            box-shadow: -1px 7px 44px -2px rgba(0, 0, 0, 0.4);
+        }
+
+        header {
+            margin: 4px;
+        }
+    </style>
+</head>
+
+<body data-root="//webapiv2.navionics.com/dist/webapi/images">
+
+    <header class="text-center">
+        <h3>Example of <mark>flyToPosition</mark> <small>Select one of this buttons to change the center of map.<small></h3>
+    </header>
+
+
+    <div id="map"></div>
+    <script>
+        var NavionicsMap = new JNC.Views.BoatingNavionicsMap({
+            tagId: '#map',
+            center: [10.25581, 43.87145],
+            navKey: 'Navionics_demo_00001'
+        });
+
+        function goTo(position, zoom) {
+            var transformed = ol.proj.transform(position, 'EPSG:4326', 'EPSG:3857');
+            NavionicsMap.flyToPosition(transformed,
+                zoom);
+        }
+    </script>
+
+
+    <footer>
+        <div id="buttons" class="text-center">
+            <button class="btn btn-default" onclick="goTo([10.2934848,43.87916],5);">Navionics SPA </button>
+            <button class="btn btn-default" onclick="goTo([-70.739712,41.780264],5);">Navionics USA </button>
+            <button class="btn btn-default" onclick="goTo([-4.1052195,50.366084],15);">Navionics UK</button>
+            <button class="btn btn-default" onclick="goTo([78.3672909,17.4559218],5);">Navionics India</button>
+            <button class="btn btn-default" onclick="goTo([-73.935242,40.730610],5);">New York City</button>
+            <button class="btn btn-default" onclick="goTo([12.475631,41.858814],5);">Rome </button>
+            <button class="btn btn-default" onclick="goTo([114.149139,22.286394],5);">Sheung Wan, Hong Kong</button>
+        </div>
+    </footer>
+
+</body>
+
+</html>
