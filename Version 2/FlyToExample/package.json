@@ -1,0 +1,26 @@
+{
+  "name": "fly_to_example",
+  "version": "1.0.0",
+  "description": "Example of usage the FlyToCommand ",
+  "main": "src/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "browser-sync start --server --serveStatic 'src' --files 'src/*.*' ",
+    "lint": "eslint src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Odyno/webapi-community-examples.git"
+  },
+  "keywords": [
+    "navionics",
+    "webapi"
+  ],
+  "author": "Alessandro Staniscia",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.2",
+    "eslint": "^3.10.2",
+    "eslint-plugin-html": "^1.7.0"
+  }
+}
