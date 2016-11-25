@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Example ShowBalloon </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+    <script type="text/javascript" src="//webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+    <link rel="stylesheet" href="//webapiv2.navionics.com/dist/webapi/webapi.min.css">
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #map {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 3px;
+            margin-bottom: 20px;
+            width: 80%;
+            height: 80%;
+            -webkit-box-shadow: -1px 7px 44px -2px rgba(0, 0, 0, 0.4);
+            -moz-box-shadow: -1px 7px 44px -2px rgba(0, 0, 0, 0.4);
+            box-shadow: -1px 7px 44px -2px rgba(0, 0, 0, 0.4);
+        }
+
+        header {
+            margin: 4px;
+        }
+
+        .jnc-balloon-title {
+            font-weight: bold;
+            font-size: 21px;
+            padding-bottom: 10px;
+        }
+
+        .jnc-balloon-content {
+            width: 100%;
+            max-height: 180px;
+            overflow: scroll;
+            font-size: 13px;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body data-root="//webapiv2.navionics.com/dist/webapi/images">
+
+    <header class="text-center">
+        <h3>Complex example of <mark>ShowBalloon</mark> <small>Select one of this buttons to change the balloon<small></h3>
+    </header>
+
+    <div id="map"></div>
+    <script>
+        var NavionicsMap = new JNC.Views.BoatingNavionicsMap({
+            tagId: '#map',
+            center: [10.25581, 43.87145],
+            navKey: 'Navionics_demo_00001'
+        });
+
+        function openBalloon(title, body, position) {
+            var content = {
+                title: title,
+                content: body,
+                coordinates: ol.proj.transform(position, 'EPSG:4326', 'EPSG:3857'),
+            }
+            NavionicsMap.showBalloon(content);
+        }
+
+        function openNewYourkBalloon() {
+            var title = "New York";
+            var descriptions =
+                '<b>New York</b> is a <a href=\"//en.wikipedia.org/wiki/U.S._state\" title=\"U.S. state\">state</a> in the <a href=\"//en.wikipedia.org/wiki/Northeastern_United_States\" title=\"Northeastern United States\">northeastern United States</a>, and is the <a href=\"//en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_area\" title=\"List of U.S. states and territories by area\">27th-most extensive</a>, <a href=\"//en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population\" title=\"List of U.S. states and territories by population\">fourth-most populous</a>, and <a href=\"//en.wikipedia.org/wiki/List_of_U.S._states_by_population_density\" title=\"List of U.S. states by population density\">seventh-most densely populated</a> U.S. state. New York is bordered by <a href=\"//en.wikipedia.org/wiki/New_Jersey\" title=\"New Jersey\">New Jersey</a> and <a href=\"//en.wikipedia.org/wiki/Pennsylvania\" title=\"Pennsylvania\">Pennsylvania</a> to the south and <a href=\"//en.wikipedia.org/wiki/Connecticut\" title=\"Connecticut\">Connecticut</a>, <a href=\"//en.wikipedia.org/wiki/Massachusetts\" title=\"Massachusetts\">Massachusetts</a>, and <a href=\"//en.wikipedia.org/wiki/Vermont\" title=\"Vermont\">Vermont</a> to the east. The state has a <a href=\"//en.wikipedia.org/wiki/Maritime_boundary\" title=\"Maritime boundary\">maritime border</a> in the <a href=\"//en.wikipedia.org/wiki/Atlantic_Ocean\" title=\"Atlantic Ocean\">Atlantic Ocean</a> with <a href=\"//en.wikipedia.org/wiki/Rhode_Island\" title=\"Rhode Island\">Rhode Island</a>, east of <a href=\"//en.wikipedia.org/wiki/Long_Island\" title=\"Long Island\">Long Island</a>, as well as an <a href=\"//en.wikipedia.org/wiki/Canada%E2%80%93United_States_border\" title=\"Canada–United States border\">international border</a> with the <a href=\"//en.wikipedia.org/wiki/Canadian_provinces\" class=\"mw-redirect\" title=\"Canadian provinces\">Canadian provinces</a> of <a href=\"//en.wikipedia.org/wiki/Quebec\" title=\"Quebec\">Quebec</a> to the north and <a href=\"//en.wikipedia.org/wiki/Ontario\" title=\"Ontario\">Ontario</a> to the west and north. The state of New York, with an estimated 19.8 million residents in 2015,<sup id=\"cite_ref-PopEstUS_4-1\" class=\"reference\"><a href=\"#cite_note-PopEstUS-4\">[4]</a></sup> is often referred to as <b>New York State</b> to distinguish it from <a href=\"//en.wikipedia.org/wiki/New_York_City\" title=\"New York City\">New York City</a>, the state\'s most populous city and its economic hub.</p>';
+            var position = [-73.935242, 40.730610];
+            openBalloon(title, descriptions, position);
+        }
+    </script>
+
+
+    <footer>
+        <div id="buttons" class="text-center">
+            <button class="btn btn-default" onclick="openBalloon('Navionics Italy','Via Fondacci,  269 Z.I. <br> Montramito 55054 Massarosa Italy <br>P.I. IT 01661250462 <br>Tel: +39-0584-329111 <br>Fax: +39-0584-962696 <br>Email: sales@navionics.it ',[10.2934848,43.87916]);">Navionics SPA </button>
+            <button class="btn btn-default" onclick="openBalloon('Navionics USA','6 Thatcher Lane<br>Wareham, MA 02571<br>Toll Free: 800-848-5896<br>Tel: 508-291-6000 <br>Fax: 508-291-6006 <br>Email: sales@navionics.com',[-70.739712,41.780264],5);">Navionics USA </button>
+            <button class="btn btn-default" onclick="openBalloon('Navionics UK','PO Box 38<br>Plymouth, PL9 8YY England<br>Tel: +44-1752-258726<br>Fax: +44-1752-451974<br>Email: sales@navionics.co.uk',[-4.1052195,50.366084],15);">Navionics UK</button>
+            <button class="btn btn-default" onclick="openNewYourkBalloon();">New York City</button>
+            <button class="btn btn-default" onclick="openBalloon('Sheung Wan, Hong Kong',null,[114.149139,22.286394],5);">Sheung Wan, Hong Kong</button>
+        </div>
+    </footer>
+
+</body>
+
+</html>
