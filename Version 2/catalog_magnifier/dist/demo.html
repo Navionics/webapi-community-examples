@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="authenticity_token" name="csrf-param" />
+  <title>Magnifier</title>
+
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+  <script async type="text/javascript" src="https://www.navionics.com/pub/static/frontend/navionics/navionics/en_US/js/header-footer-stage.js?_c_c=2.1.9"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+  <script type="text/javascript" src="http://webapiv2.navionics.com/dist/webapi/webapi.min.no-dep.js"></script>
+  <link rel="stylesheet" href="http://webapiv2.navionics.com/dist/webapi/webapi.min.css">
+
+
+  <style type="text/css">
+    .map_style {
+      border: 1px solid #003e7e;
+      width: 100%;
+      height: 440px;
+      float: none;
+      margin: 0 auto;
+    }
+  </style>
+
+
+  <link rel="stylesheet" href="css/magnifier.css">
+  <script type="text/javascript" src="js/magnifier.js"></script>
+
+</head>
+
+<body data-root="http://webapiv2.navionics.com/dist/webapi/images">
+
+  <div id="site-header1"></div>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Magnifier Example</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div id="map" class="map_style">
+          <span id="fullscreen-action" class=" bottom-right fullscreenicons glyphicon glyphicon-fullscreen"></span>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <h1> Ipsum Presents</h1>
+        <p>
+          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+          sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora
+          incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+          ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    jQuery(document).ready(function() {
+
+      /*
+       * NAVIONICS HEADER
+       */
+
+
+        var headerObject;
+        if (typeof NES !== "undefined" && NES !== null) {
+            headerObject = new NES.Header();
+            headerObject.render({
+                id: "site-header1"
+            });
+        }
+
+      /*
+       * NAVIONICS ProductViewer Example
+       */
+
+
+        var productViewer = new JNC.Views.ProductViewer({
+            tagId: "#map",
+            center: [-70.2781957, 41.650138],
+            zoom: 5,
+            navKey: "****",  //USE YOUR KEY
+            DepthUnitControl: false,
+            DistanceUnitControl: false,
+            DistanceControl: false,
+            LayerControl: false,
+            SonarControl: false,
+            safetyDepth: JNC.SAFETY_DEPTH_LEVEL.LEVEL0
+        });
+
+        productViewer.productListCreated("NavionicsPlus");
+        productViewer.productItemCreated("5G615S2", "NavionicsPlus", "//backend.navionics.io/products/kml/navionics_plus_small/5G615S2.kml", "#EB3D23");
+        productViewer.productItemCreated("5G587S2", "NavionicsPlus", "//backend.navionics.io/products/kml/navionics_plus_small/5G587S2.kml", "#FFBE00");
+        productViewer.productItemCreated("5G630S2", "NavionicsPlus", "//backend.navionics.io/products/kml/navionics_plus_small/5G630S2.kml", "#140AF0");
+        productViewer.productItemCreated("5G529S2", "NavionicsPlus", "//backend.navionics.io/products/kml/navionics_plus_small/5G529S2.kml", "#FFBE00");
+        productViewer.productItemCreated("5G012S", "NavionicsPlus", "//backend.navionics.io/products/kml/navionics_plus_small/5G012S.kml", "#EB3D23");
+        productViewer.productItemCreated("5G591S2", "NavionicsPlus", "//backend.navionics.io/products/kml/navionics_plus_small/5G591S2.kml", "#FFBE00");
+        productViewer.productItemCreated("5G427S", "NavionicsPlus", "//backend.navionics.io/products/kml/navionics_plus_small/5G427S.kml", "#140AF0");
+        productViewer.productItemCreated("5G535S2", "NavionicsPlus", "//backend.navionics.io/products/kml/navionics_plus_small/5G535S2.kml", "#EB3D23");
+        productViewer.showProducts("5G529S2", "NavionicsPlus");
+
+
+      /*
+       *
+       * The Magnifire
+       *
+       */
+        var magnifier = new Magnifier({
+            toggle: "#fullscreen-action",
+            view: "#map"
+        }, productViewer);
+
+    });
+  </script>
+
+
+
+
+</body>
+
+</html>
