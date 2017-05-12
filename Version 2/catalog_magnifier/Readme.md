@@ -8,7 +8,7 @@ Main Steps:
 
 * Download the repository ( use bower, npm or just simple file download )
 * Include the `dist/css/magnifier.css` and `dist/js/magnifier.js` on your html
-* On script tag create the Magnifier object and link it with your WebAPIv2 Catalog ( or in general Navionics WebAPIv2 Map)
+* Create Magnifier object and link it with WebAPIv2 Catalog ( or in general Navionics WebAPIv2 Map)
 
 Example:
   ```html
