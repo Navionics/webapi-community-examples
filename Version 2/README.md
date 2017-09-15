@@ -10,4 +10,5 @@ Example for the WebAPI V2. Content of this folder:
 * NavionicsOnLeaflet - Example of how to use Navionics Layer on Leaflet
 * Zooms - Example of different default zoom levels
 * NoBodyTag - Example of how to include http://webapiv2.navionics.com/dist/webapi/images not in body tag
+* Banner - Exmaple of how to use Navionics Banner component
 * Other ...
